@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Display</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        #container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        #backgroundImage { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; object-fit: contain; }
+        #displayCanvas { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid red; } /* Added border for visibility */
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="backgroundImage" src="background.jpg" alt="Background">
+        <canvas id="displayCanvas"></canvas>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="display.js"></script>
+</body>
+</html>

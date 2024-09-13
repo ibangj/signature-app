@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Tablet</title>
+    <style>
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            overflow: hidden; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #canvasContainer {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #drawingCanvas { 
+            border: 1px solid black;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvasContainer">
+        <canvas id="drawingCanvas"></canvas>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const pathParts = window.location.pathname.split('/');
+        window.tabletId = pathParts[pathParts.length - 1] !== 'tablet' ? pathParts[pathParts.length - 1] : null;
+    </script>
+    <script src="/tablet.js"></script>
+</body>
+</html>

@@ -9,9 +9,11 @@ let lastPoints = {};
 function loadTabletAreas() {
     const storedConfig = localStorage.getItem('tabletAreasConfig');
     return storedConfig ? JSON.parse(storedConfig) : {
-        '1': { x: 0, y: 0.7, width: 0.3, height: 0.3 * (9/16) },
-        '2': { x: 0.35, y: 0.7, width: 0.3, height: 0.3 * (9/16) },
-        '3': { x: 0.7, y: 0.7, width: 0.3, height: 0.3 * (9/16) }
+        '1': { x: 0, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
+        '2': { x: 0.2, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
+        '3': { x: 0.4, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
+        '4': { x: 0.6, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
+        '5': { x: 0.8, y: 0.7, width: 0.2, height: 0.2 * (9/16) }
     };
 }
 

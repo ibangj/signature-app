@@ -16,7 +16,12 @@ app.get('/tablet', (req, res) => {
 });
 
 app.get('/tablet/:id', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'tablet.html'));
+    const id = req.params.id;
+    if (['1', '2', '3', '4', '5'].includes(id)) {
+        res.sendFile(path.join(__dirname, 'public', 'tablet.html'));
+    } else {
+        res.status(404).send('Tablet not found');
+    }
 });
 
 app.get('/display', (req, res) => {

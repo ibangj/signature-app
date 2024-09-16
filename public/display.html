@@ -9,6 +9,7 @@
         #container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
         #backgroundImage { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; object-fit: contain; }
         #displayCanvas { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);} /* Added border for visibility */
+        .home-button { position: absolute; top: 10px; left: 10px; padding: 5px 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -18,5 +19,6 @@
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="display.js"></script>
+    <a href="/" class="home-button">Return to Home</a>
 </body>
 </html>

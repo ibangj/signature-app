@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.get('/tablet', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'tablet.html'));
 });

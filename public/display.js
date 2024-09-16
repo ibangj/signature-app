@@ -21,23 +21,16 @@ tabletAreas = loadTabletAreas();
 
 // Set canvas size
 function resizeCanvas() {
-    const container = document.getElementById('container');
-    const aspectRatio = 16 / 9;
-    let canvasWidth, canvasHeight;
+    const backgroundImage = document.getElementById('backgroundImage');
+    const imgRect = backgroundImage.getBoundingClientRect();
 
-    if (window.innerWidth / window.innerHeight > aspectRatio) {
-        canvasHeight = window.innerHeight;
-        canvasWidth = canvasHeight * aspectRatio;
-    } else {
-        canvasWidth = window.innerWidth;
-        canvasHeight = canvasWidth / aspectRatio;
-    }
+    canvas.width = imgRect.width;
+    canvas.height = imgRect.height;
+    canvas.style.width = `${imgRect.width}px`;
+    canvas.style.height = `${imgRect.height}px`;
 
-    canvas.style.width = `${canvasWidth}px`;
-    canvas.style.height = `${canvasHeight}px`;
-    canvas.width = canvasWidth * window.devicePixelRatio;
-    canvas.height = canvasHeight * window.devicePixelRatio;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    // Reset the scale to 1 to avoid cumulative scaling
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
 
     console.log('Canvas resized to:', canvas.width, 'x', canvas.height);
 }
@@ -58,6 +51,7 @@ function applyTabletAreas() {
 }
 
 resizeCanvas();
+window.addEventListener('load', resizeCanvas);
 window.addEventListener('resize', resizeCanvas);
 
 // Reload tablet areas when receiving a 'configUpdated' event
@@ -114,7 +108,7 @@ socket.on('connect_error', (error) => {
     console.error('Connection error:', error);
 });
 
-function visualizeTabletAreas() {
+/*function visualizeTabletAreas() {
     const container = document.getElementById('container');
     const backgroundImage = document.getElementById('backgroundImage');
     const imgRect = backgroundImage.getBoundingClientRect();
@@ -135,3 +129,4 @@ function visualizeTabletAreas() {
 }
 
 visualizeTabletAreas();
+*/

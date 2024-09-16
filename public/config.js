@@ -1,3 +1,5 @@
+const socket = io();
+
 const container = document.getElementById('container');
 const areas = document.querySelectorAll('.tablet-area');
 const saveButton = document.getElementById('saveButton');

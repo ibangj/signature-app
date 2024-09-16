@@ -74,8 +74,11 @@ socket.on('draw', (data) => {
         return;
     }
 
-    const x = (area.x + data.x * area.width) * canvas.width;
-    const y = (area.y + data.y * area.height) * canvas.height;
+    const backgroundImage = document.getElementById('backgroundImage');
+    const imgRect = backgroundImage.getBoundingClientRect();
+
+    const x = area.x * imgRect.width + data.x * area.width * imgRect.width;
+    const y = area.y * imgRect.height + data.y * area.height * imgRect.height;
 
     console.log('Drawing at:', x, y, 'in area:', area);
 
@@ -110,3 +113,25 @@ socket.on('connect', () => {
 socket.on('connect_error', (error) => {
     console.error('Connection error:', error);
 });
+
+function visualizeTabletAreas() {
+    const container = document.getElementById('container');
+    const backgroundImage = document.getElementById('backgroundImage');
+    const imgRect = backgroundImage.getBoundingClientRect();
+
+    Object.keys(tabletAreas).forEach(key => {
+        const area = tabletAreas[key];
+        const div = document.createElement('div');
+        div.style.position = 'absolute';
+        div.style.left = `${area.x * imgRect.width}px`;
+        div.style.top = `${area.y * imgRect.height}px`;
+        div.style.width = `${area.width * imgRect.width}px`;
+        div.style.height = `${area.height * imgRect.height}px`;
+        div.style.border = '2px solid red';
+        div.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
+        div.style.zIndex = '1000';
+        container.appendChild(div);
+    });
+}
+
+visualizeTabletAreas();

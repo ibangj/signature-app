@@ -9,11 +9,13 @@ let lastPoints = {};
 function loadTabletAreas() {
     const storedConfig = localStorage.getItem('tabletAreasConfig');
     return storedConfig ? JSON.parse(storedConfig) : {
-        '1': { x: 0, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-        '2': { x: 0.2, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-        '3': { x: 0.4, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-        '4': { x: 0.6, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-        '5': { x: 0.8, y: 0.7, width: 0.2, height: 0.2 * (9/16) }
+        '1': { x: 0, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+        '2': { x: 0.14285714, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+        '3': { x: 0.28571428, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+        '4': { x: 0.42857142, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+        '5': { x: 0.57142857, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+        '6': { x: 0.71428571, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+        '7': { x: 0.85714285, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) }
     };
 }
 

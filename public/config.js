@@ -13,11 +13,13 @@ const ASPECT_RATIO = 16 / 9;
 // Load existing configuration or set defaults
 const storedConfig = localStorage.getItem('tabletAreasConfig');
 const config = storedConfig ? JSON.parse(storedConfig) : {
-    '1': { x: 0, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-    '2': { x: 0.2, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-    '3': { x: 0.4, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-    '4': { x: 0.6, y: 0.7, width: 0.2, height: 0.2 * (9/16) },
-    '5': { x: 0.8, y: 0.7, width: 0.2, height: 0.2 * (9/16) }
+    '1': { x: 0, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+    '2': { x: 0.14285714, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+    '3': { x: 0.28571428, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+    '4': { x: 0.42857142, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+    '5': { x: 0.57142857, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+    '6': { x: 0.71428571, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) },
+    '7': { x: 0.85714285, y: 0.7, width: 0.14285714, height: 0.14285714 * (9/16) }
 };
 
 // Apply configuration to areas
@@ -138,9 +140,16 @@ function updateAspectRatioIndicators() {
 
 // Set container size to match the aspect ratio of the background image
 function resizeContainer() {
-    const img = new Image();
+    const img = document.getElementById('backgroundImage');
+    const container = document.getElementById('container');
+    
+    if (!img || !container) {
+        console.error('Background image or container not found');
+        return;
+    }
+
     img.onload = function() {
-        const imgAspectRatio = this.width / this.height;
+        const imgAspectRatio = this.naturalWidth / this.naturalHeight;
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
         
@@ -157,8 +166,15 @@ function resizeContainer() {
         container.style.height = `${containerHeight}px`;
         applyConfig();
     };
-    img.src = 'background.jpg';
+
+    // Trigger the onload function if the image is already loaded
+    if (img.complete) {
+        img.onload();
+    }
 }
 
-window.addEventListener('resize', resizeContainer);
-resizeContainer();
+// Call resizeContainer when the window loads and resizes
+document.addEventListener('DOMContentLoaded', () => {
+    resizeContainer();
+    window.addEventListener('resize', resizeContainer);
+});

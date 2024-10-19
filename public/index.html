@@ -34,6 +34,10 @@
 <body>
     <div class="container">
         <h1>Signature App</h1>
+        <select id="backgroundSelect">
+            <option value="background.jpg">Background 1</option>
+            <option value="background2.jpg">Background 2</option>
+        </select>
         <a href="/display" class="button">Display</a>
         <a href="/config" class="button">Config</a>
         <a href="/tablet/1" class="button">Tablet 1</a>
@@ -44,5 +48,7 @@
         <a href="/tablet/6" class="button">Tablet 6</a>
         <a href="/tablet/7" class="button">Tablet 7</a>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

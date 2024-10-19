@@ -42,9 +42,18 @@ app.post('/saveConfig', (req, res) => {
     res.sendStatus(200);
 });
 
+let currentBackground = 'background.jpg';
+
 io.on('connection', (socket) => {
     console.log('New client connected:', socket.id);
     
+    socket.emit('currentBackground', currentBackground);
+
+    socket.on('backgroundChange', (newBackground) => {
+        currentBackground = newBackground;
+        io.emit('backgroundUpdate', newBackground);
+    });
+
     socket.on('draw', (data) => {
         console.log('Draw event received:', data);
         io.emit('draw', data);  // Broadcast to all connected clients

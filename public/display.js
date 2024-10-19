@@ -80,7 +80,7 @@ socket.on('draw', (data) => {
 
     ctx.lineWidth = 2;
     ctx.lineCap = 'round';
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = '#DAC699'; //change this to color of the pen in display
 
     if (data.type === 'start') {
         ctx.beginPath();
@@ -132,3 +132,13 @@ socket.on('connect_error', (error) => {
 
 visualizeTabletAreas();
 */
+
+const backgroundImage = document.getElementById('backgroundImage');
+
+socket.on('currentBackground', (background) => {
+    backgroundImage.src = background;
+});
+
+socket.on('backgroundUpdate', (newBackground) => {
+    backgroundImage.src = newBackground;
+});

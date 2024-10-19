@@ -68,7 +68,8 @@ function draw(e) {
         tabletId: window.tabletId,
         x: x,
         y: y,
-        type: 'draw'
+        type: 'draw',
+        color: '#DAC699'
     });
 }
 

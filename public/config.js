@@ -178,3 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeContainer();
     window.addEventListener('resize', resizeContainer);
 });
+
+const backgroundImage = document.getElementById('backgroundImage');
+
+socket.on('currentBackground', (background) => {
+    backgroundImage.src = background;
+    container.style.backgroundImage = `url(${background})`;
+});
+
+socket.on('backgroundUpdate', (newBackground) => {
+    backgroundImage.src = newBackground;
+    container.style.backgroundImage = `url(${newBackground})`;
+});
